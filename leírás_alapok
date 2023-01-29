@@ -1,0 +1,46 @@
+Terminál 
+//Új munkakönyvtár létrehozása
+/home/attila/teszt_docker
+
+// Docker telepítése
+curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+ 
+ //Telepítés tesztelése
+ docker version
+ docker ps
+ docker inspect
+ docker stop név|ID
+ pwd hol is vagyunk
+ id azonosítónk
+
+
+// alábbi image-hez compose file létrehozása
+ https://hub.docker.com/r/linuxserver/nginx
+ 
+ compose file készítése: docker-compose.yml
+ // id felhasznaló PUID és PDID esetleg TZ is, pwd parancs segithet
+
+nginx_config mappa létrehozása a munkakönyvtárban (teszt_docker)
+A docker-compose fájlban adjuk meg az nginx_config mappa elérési útvonalát!
+</path/to/appdata/config>:/config -> /home/attila/teszt_docker/nginx_config:/config
+A host 8080 portján figyeljen a konténer, a 443-as portot ne továbbítsuk!
+ports:
+      - 8080:80
+      
+docker compose up -d parancsal elindítjuk a docker-compose.yml filét ami alapján a docker megcsinálja a konténert.
+Az nginx induláskor elkészíti a szükséges mappákat és beállításokat az nginx_config mappában! 
+
+Tesztelés: -localhost:8080
+           -curl localhost:8080
+           -Host ipcíme:8080
+
+
+Az index.html szerkesztése, és tesztelése.
+GitHub-ra töltsük fel a docker-compose.yml és egy teszt képet a müködésről!
+
+
+
+
+
+ 
